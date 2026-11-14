@@ -102,7 +102,7 @@
             }
         });
 
-        submitBtn.addEventListener("click", async () => {
+        async function handleAuth() {
             const username = document.getElementById("auth-username").value.trim();
             const password = passwordInput.value;
 
@@ -112,23 +112,39 @@
                 return;
             }
 
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Memproses...";
+            errorMsg.style.display = "none";
+
             try {
                 const res = isRegisterMode 
-                    ? await registerUserAPI(username, password)
-                    : await loginUserAPI(username, password);
+                    ? await registerUser(username, password)
+                    : await loginUser(username, password);
 
                 if (!res.success) {
                     errorMsg.textContent = res.message || "Gagal memproses autentikasi.";
                     errorMsg.style.display = "block";
+                } else {
+                    window.location.href = "dashboard.html";
                     return;
                 }
-
-                setCurrentUser(res.user.username);
-                window.location.href = "dashboard.html";
             } catch (err) {
-                errorMsg.textContent = "Terjadi gangguan jaringan atau server mati.";
+                errorMsg.textContent = "Gagal terhubung ke server.";
                 errorMsg.style.display = "block";
             }
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = isRegisterMode ? "Daftar & Masuk" : "Masuk ke Dashboard";
+        }
+
+        submitBtn.addEventListener("click", handleAuth);
+
+        document.getElementById("auth-username").addEventListener("keypress", (e) => {
+            if (e.key === "Enter") handleAuth();
+        });
+
+        passwordInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") handleAuth();
         });
     </script>
 </body>

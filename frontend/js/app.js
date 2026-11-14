@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         studentInput.value = "";
         resultSection.classList.add("hidden");
 
-        nextBtn.textContent = (index === questions.length - 1) ? "Ulangi dari Soal #01 ↺" : "Soal Berikutnya →";
+        nextBtn.textContent = (index === questions.length - 1) ? "Ulangi dari Soal #01" : "Soal Berikutnya";
     }
 
     submitBtn.addEventListener("click", async () => {
