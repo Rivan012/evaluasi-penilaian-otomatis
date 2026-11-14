@@ -21,6 +21,14 @@ Aplikasi web berbasis FastAPI untuk penilaian otomatis jawaban esai pendek (*sho
 
 ```text
 evaluasi-penilaian-otomatis/
+├── backend/
+│   ├── algorithms/        # Logika fuzzy matching & pra-pemrosesan teks
+│   ├── api/               # Endpoint REST API (health, routes)
+│   ├── database/          # Penyimpanan data (users.json & bank soal CRUD)
+│   ├── models/            # Model loader (fuzzy_matching_model.joblib)
+│   ├── schemas/           # Pydantic request & response schemas
+│   ├── services/          # Layanan ITS feedback & gamifikasi
+│   └── main.py            # Konfigurasi FastAPI & static files
 ├── frontend/
 │   ├── index.html         # Portal utama & navigasi
 │   ├── login.html         # Halaman autentikasi login & registrasi
@@ -37,7 +45,8 @@ evaluasi-penilaian-otomatis/
 │       ├── dashboard.js   # State management pengerjaan kuis
 │       ├── gamification.js# Kalkulasi XP, level, & badge
 │       └── leaderboard.js # Fetch & render tabel peringkat
-├── main.py                # Server FastAPI & logic endpoint penilaian
+├── tests/                 # Unit test backend
+├── main.py                # Server entrypoint (Uvicorn runner)
 ├── users.json             # Penyimpanan data pengguna & histori skor
 ├── requirements.txt       # Dependensi pustaka Python
 └── README.md              # Dokumentasi proyek

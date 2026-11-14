@@ -43,5 +43,50 @@
                 "xp": 5
             }
         ]
+    },
+    "rivan": {
+        "username": "rivan",
+        "password": "rivan2026",
+        "xp": 70,
+        "level": 1,
+        "totalAnswered": 5,
+        "highScores": 1,
+        "history": [
+            {
+                "tanggal": "12:48",
+                "soal": "Apa tujuan tahap preprocessing seperti lowerc...",
+                "skor": 43,
+                "kategori": "perlu_perbaikan",
+                "xp": 5
+            },
+            {
+                "tanggal": "12:48",
+                "soal": "Mengapa Intelligent Tutoring System membutuhk...",
+                "skor": 47,
+                "kategori": "perlu_perbaikan",
+                "xp": 5
+            },
+            {
+                "tanggal": "12:48",
+                "soal": "Apa yang dimaksud dengan Levenshtein Distance...",
+                "skor": 45,
+                "kategori": "perlu_perbaikan",
+                "xp": 5
+            },
+            {
+                "tanggal": "12:47",
+                "soal": "Jelaskan fungsi utama dari algoritma Fuzzy Ma...",
+                "skor": 100,
+                "kategori": "sangat_baik",
+                "xp": 50
+            },
+            {
+                "tanggal": "12:47",
+                "soal": "Jelaskan fungsi utama dari algoritma Fuzzy Ma...",
+                "skor": 18,
+                "kategori": "perlu_perbaikan",
+                "xp": 5
+            }
+        ]
     }
 }
