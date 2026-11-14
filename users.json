@@ -47,11 +47,18 @@
     "rivan": {
         "username": "rivan",
         "password": "rivan2026",
-        "xp": 70,
+        "xp": 95,
         "level": 1,
-        "totalAnswered": 5,
+        "totalAnswered": 6,
         "highScores": 1,
         "history": [
+            {
+                "tanggal": "13:55",
+                "soal": "Jelaskan fungsi utama dari algoritma Fuzzy Ma...",
+                "skor": 72,
+                "kategori": "cukup",
+                "xp": 25
+            },
             {
                 "tanggal": "12:48",
                 "soal": "Apa tujuan tahap preprocessing seperti lowerc...",

@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from backend.schemas.request import AuthRequest, EvaluationRequest
-from backend.database.crud import load_users, save_users, BANK_SOAL
+from backend.database.crud import load_users, save_users, get_all_questions, get_question_by_id
 from backend.algorithms.prediction import evaluate_answer_text
 from backend.services.gamification_service import update_user_progress
 from backend.services.its_service import get_feedback
@@ -64,14 +64,11 @@ def get_leaderboard():
 
 @router.get("/questions")
 def get_questions():
-    return [
-        {"id": q["id"], "kategori": q["kategori"], "pertanyaan": q["pertanyaan"]}
-        for q in BANK_SOAL
-    ]
+    return get_all_questions()
 
 @router.post("/evaluate")
 def evaluate_answer(data: EvaluationRequest):
-    soal = next((q for q in BANK_SOAL if q["id"] == data.question_id), None)
+    soal = get_question_by_id(data.question_id)
     if not soal:
         return {"error": "Soal tidak ditemukan"}
 

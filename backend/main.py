@@ -2,8 +2,11 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from backend.database.connection import init_db
 from backend.api.routes import router as api_router
 from backend.api.health import router as health_router
+
+init_db()
 
 app = FastAPI(title="Intelligent Tutoring System API")
 
