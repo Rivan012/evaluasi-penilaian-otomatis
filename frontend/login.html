@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - NEUROGRADE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        .login-wrapper {
+            width: 100%;
+            max-width: 440px;
+        }
+        .auth-input {
+            width: 100%;
+            background: rgba(9, 3, 20, 0.8);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            border-radius: 10px;
+            padding: 0.85rem 1rem;
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-top: 0.4rem;
+            margin-bottom: 1rem;
+        }
+        .auth-input:focus {
+            outline: none;
+            border-color: var(--cyan-accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <div class="login-wrapper">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+            <div class="logo" style="font-size: 2rem;">NEURO<span>GRADE</span></div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem;">
+                Intelligent Tutoring System • Evaluasi Otomatis
+            </p>
+        </div>
+
+        <section class="glass-card">
+            <div class="badge" id="auth-badge">PORTAL SISWA</div>
+            <h2 id="auth-title" style="margin-bottom: 0.3rem;">Masuk ke Akun</h2>
+            <p id="auth-subtitle" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                Masukkan username dan password yang sudah terdaftar.
+            </p>
+
+            <label style="font-size: 0.9rem; color: var(--purple-neon);">Username</label>
+            <input type="text" id="auth-username" class="auth-input" placeholder="Buat atau masukkan username">
+
+            <label style="font-size: 0.9rem; color: var(--purple-neon);">Password</label>
+            <input type="password" id="auth-password" class="auth-input" placeholder="Masukkan password">
+
+            <p id="auth-error" style="color: #f87171; font-size: 0.85rem; margin-bottom: 0.5rem; display: none;"></p>
+
+            <button id="btn-submit-auth" class="btn-futuristic" style="margin-top: 0.5rem;">Masuk ke Dashboard</button>
+            
+            <p style="text-align: center; margin-top: 1.2rem; font-size: 0.9rem; color: var(--text-muted);">
+                <span id="toggle-text">Belum punya akun?</span>
+                <a href="#" id="toggle-mode" style="color: var(--cyan-accent); font-weight: 700; text-decoration: none; margin-left: 4px;">
+                    Daftar Akun Baru
+                </a>
+            </p>
+        </section>
+    </div>
+
+    <script src="js/gamification.js"></script>
+    <script>
+        if (getCurrentUsername()) {
+            window.location.href = "dashboard.html";
+        }
+
+        let isRegisterMode = false;
+
+        const badge = document.getElementById("auth-badge");
+        const title = document.getElementById("auth-title");
+        const subtitle = document.getElementById("auth-subtitle");
+        const submitBtn = document.getElementById("btn-submit-auth");
+        const toggleText = document.getElementById("toggle-text");
+        const toggleLink = document.getElementById("toggle-mode");
+        const errorMsg = document.getElementById("auth-error");
+        const passwordInput = document.getElementById("auth-password");
+
+        toggleLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            isRegisterMode = !isRegisterMode;
+            errorMsg.style.display = "none";
+
+            if (isRegisterMode) {
+                badge.textContent = "PENDAFTARAN BARU";
+                title.textContent = "Buat Akun Siswa";
+                subtitle.textContent = "Isi username dan password baru untuk mendaftar.";
+                submitBtn.textContent = "Daftar & Masuk";
+                toggleText.textContent = "Sudah punya akun?";
+                toggleLink.textContent = "Masuk di sini";
+            } else {
+                badge.textContent = "PORTAL SISWA";
+                title.textContent = "Masuk ke Akun";
+                subtitle.textContent = "Masukkan username dan password yang sudah terdaftar.";
+                submitBtn.textContent = "Masuk ke Dashboard";
+                toggleText.textContent = "Belum punya akun?";
+                toggleLink.textContent = "Daftar Akun Baru";
+            }
+        });
+
+        async function handleAuth() {
+            const u = document.getElementById("auth-username").value;
+            const p = passwordInput.value;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Memproses...";
+            errorMsg.style.display = "none";
+
+            try {
+                const res = isRegisterMode ? await registerUser(u, p) : await loginUser(u, p);
+
+                if (res.success) {
+                    window.location.href = "dashboard.html";
+                    return;
+                } else {
+                    errorMsg.textContent = res.message;
+                    errorMsg.style.display = "block";
+                }
+            } catch (err) {
+                errorMsg.textContent = "Gagal terhubung ke server.";
+                errorMsg.style.display = "block";
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = isRegisterMode ? "Daftar & Masuk" : "Masuk ke Dashboard";
+        }
+
+        submitBtn.addEventListener("click", handleAuth);
+
+        passwordInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") handleAuth();
+        });
+    </script>
+</body>
+</html>

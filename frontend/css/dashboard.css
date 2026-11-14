@@ -1,0 +1,114 @@
+.stats-grid { 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-glow);
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 4px; height: 100%;
+    background: linear-gradient(180deg, #c084fc, #38bdf8);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 0.4rem;
+    background: linear-gradient(90deg, #ffffff, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.futuristic-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.futuristic-table th {
+    padding: 1rem;
+    color: var(--purple-neon);
+    border-bottom: 1px solid var(--border-glow);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.futuristic-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+    font-size: 0.95rem;
+}
+
+.futuristic-table tr:hover {
+    background: rgba(147, 51, 234, 0.12);
+}
+
+.rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-weight: 700;
+    background: rgba(147, 51, 234, 0.3);
+    border: 1px solid var(--purple-neon);
+}
+
+.rank-1 { background: linear-gradient(135deg, #f59e0b, #fbbf24); color: #090314; border: none; }
+.rank-2 { background: linear-gradient(135deg, #94a3b8, #cbd5e1); color: #090314; border: none; }
+.rank-3 { background: linear-gradient(135deg, #b45309, #d97706); color: #fff; border: none; }
+
+.level-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+.badge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.achievement-item {
+    background: rgba(9, 3, 20, 0.6);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    opacity: 0.45;
+    transition: 0.3s;
+}
+
+.achievement-item.unlocked {
+    opacity: 1;
+    border-color: var(--cyan-accent);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - NEUROGRADE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .btn-logout {
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.8rem;
+            border: 1px solid #f87171;
+            border-radius: 12px;
+            background: transparent;
+            color: #f87171;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-logout:hover {
+            background: rgba(248, 113, 113, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <nav class="navbar">
+        <div class="logo">NEURO<span>GRADE</span></div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="index.html">Kuis</a></li>
+            <li><a href="profile.html" class="active">Profil</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="glass-card" style="text-align: center;">
+            <div class="badge">AKUN SISWA AKTIF</div>
+            <h2 id="profile-username" style="font-size: 1.8rem;">-</h2>
+            
+            <div style="margin-top: 1rem;">
+                <span id="stat-level" style="font-weight: 700; color: var(--cyan-accent); font-size: 1.2rem;">Level 1</span>
+                <span> • </span>
+                <span id="stat-xp" style="font-weight: 700; color: var(--purple-neon);">0 XP</span>
+            </div>
+
+            <button id="btn-logout" class="btn-logout">Keluar (Logout)</button>
+        </section>
+
+        <section class="glass-card">
+            <h3>Lencana Pencapaian (Achievements)</h3>
+            <div class="badge-grid">
+                <div class="achievement-item" id="badge-first">
+                    <div style="font-size: 1.8rem;">🚀</div>
+                    <strong style="display: block; margin-top: 0.5rem;">Langkah Awal</strong>
+                    <small style="color: var(--text-muted);">Menjawab 1 soal pertama</small>
+                </div>
+                <div class="achievement-item" id="badge-master">
+                    <div style="font-size: 1.8rem;">⚡</div>
+                    <strong style="display: block; margin-top: 0.5rem;">Akurasi Tinggi</strong>
+                    <small style="color: var(--text-muted);">3x skor Sangat Baik (≥80%)</small>
+                </div>
+                <div class="achievement-item" id="badge-levelup">
+                    <div style="font-size: 1.8rem;">🏆</div>
+                    <strong style="display: block; margin-top: 0.5rem;">Naik Tingkat</strong>
+                    <small style="color: var(--text-muted);">Mencapai minimal Level 2</small>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/gamification.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("profile-username").textContent = getCurrentUsername() || "-";
+            document.getElementById("btn-logout").addEventListener("click", logoutUser);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - NEUROGRADE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <nav class="navbar">
+        <div class="logo">NEURO<span>GRADE</span></div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="index.html">Kuis</a></li>
+            <li><a href="profile.html">Profil</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="hero-header">
+            <h1>Dashboard Performa</h1>
+            <p>Ringkasan hasil evaluasi dan progres belajar</p>
+        </header>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Dijawab</div>
+                <div class="stat-value" id="stat-total">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Rata-rata Skor</div>
+                <div class="stat-value" id="stat-avg">0%</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Poin XP</div>
+                <div class="stat-value" id="stat-xp">0 XP</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Tingkat Saat Ini</div>
+                <div class="stat-value" id="stat-level">Level 1</div>
+            </div>
+        </section>
+
+        <section class="glass-card">
+            <div class="level-header">
+                <strong>Progres Level</strong>
+                <span id="level-progress-text" style="color: var(--purple-neon); font-size: 0.9rem;">0 / 100 XP menuju Level 2</span>
+            </div>
+            <div class="progress-bar" style="margin-bottom: 0;">
+                <div id="level-progress-fill" class="progress-fill"></div>
+            </div>
+        </section>
+
+        <section class="glass-card">
+            <h3>Riwayat Evaluasi Terbaru</h3>
+            <div class="table-wrapper">
+                <table class="futuristic-table">
+                    <thead>
+                        <tr>
+                            <th>Waktu</th>
+                            <th>Pertanyaan</th>
+                            <th>Skor</th>
+                            <th>Reward</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/gamification.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

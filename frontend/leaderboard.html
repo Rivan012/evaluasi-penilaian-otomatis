@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - NEUROGRADE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <nav class="navbar">
+        <div class="logo">NEURO<span>GRADE</span></div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="index.html">Kuis</a></li>
+            <li><a href="profile.html">Profil</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="hero-header">
+            <h1>Papan Peringkat</h1>
+            <p>Klasemen berdasarkan akumulasi XP evaluasi</p>
+        </header>
+
+        <section class="glass-card">
+            <div class="table-wrapper">
+                <table class="futuristic-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Nama Peserta</th>
+                            <th>Level</th>
+                            <th>Total XP</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/gamification.js"></script>
+    <script src="js/leaderboard.js"></script>
+</body>
+</html>
