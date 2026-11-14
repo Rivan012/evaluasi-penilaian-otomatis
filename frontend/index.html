@@ -4,22 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Tutor - Evaluasi Jawaban Otomatis</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <div class="bg-orb orb-1"></div>
-    <div class="bg-orb orb-2"></div>
-
     <nav class="navbar">
         <div class="logo">NEURO<span>GRADE</span></div>
         <ul class="nav-links">
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="leaderboard.html">Leaderboard</a></li>
-            <li><a href="index.html">Kuis</a></li>
+            <li><a href="index.html" class="active">Kuis</a></li>
             <li><a href="profile.html">Profil</a></li>
         </ul>
     </nav>
@@ -30,21 +26,21 @@
             <p>Evaluasi Jawaban Singkat Berbasis Fuzzy Matching</p>
         </header>
 
-<section class="glass-card question-box">
+        <section class="card question-box">
             <div class="badge" id="question-badge">MEMUAT SOAL...</div>
             <h2 id="question-text">Sedang mengambil pertanyaan dari server...</h2>
         </section>
 
-        <section class="glass-card answer-box">
+        <section class="card answer-box">
             <label for="student-answer">Jawaban Kamu:</label>
             <textarea id="student-answer" rows="4" placeholder="Ketik jawaban singkatmu di sini..."></textarea>
-            <button id="submit-btn" class="btn-futuristic">
+            <button id="submit-btn" class="btn-primary">
                 <span>Analisis Jawaban</span>
             </button>
         </section>
 
         <!-- Area Hasil Penilaian -->
-        <section id="result-section" class="glass-card result-box hidden">
+        <section id="result-section" class="card result-box hidden">
             <div class="result-header">
                 <div>
                     <span class="label">Skor Kemiripan (Ratio)</span>
@@ -59,15 +55,15 @@
 
             <p id="feedback-text" class="feedback-msg"></p>
             
-            <div style="margin-top: 1rem; padding: 0.9rem; border-radius: 10px; background: rgba(9, 3, 20, 0.6); border: 1px solid rgba(168, 85, 247, 0.25);">
-                <small style="color: var(--purple-neon); font-weight: 700; display: block; margin-bottom: 0.3rem;">Referensi Jawaban Ideal:</small>
-                <p id="ideal-answer-text" style="font-size: 0.9rem; color: var(--text-muted);"></p>
+            <div style="margin-top: 1.25rem; padding: 1rem; border-radius: var(--radius-md); background: var(--bg-surface-elevated); border: 1px solid var(--border);">
+                <small style="color: #C4B5FD; font-weight: 600; display: block; margin-bottom: 0.35rem;">Referensi Jawaban Ideal:</small>
+                <p id="ideal-answer-text" style="font-size: 0.925rem; color: var(--text-muted); line-height: 1.5;"></p>
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem;">
                 <div class="xp-gained" id="xp-badge" style="margin-top: 0;">+0 XP</div>
-                <button id="next-btn" class="btn-futuristic" style="width: auto; margin-top: 0; padding: 0.7rem 1.4rem;">
-                    Soal Berikutnya →
+                <button id="next-btn" class="btn-primary" style="width: auto; margin-top: 0; padding: 0.65rem 1.4rem;">
+                    Soal Berikutnya
                 </button>
             </div>
         </section>

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - NEUROGRADE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             display: flex;
@@ -18,55 +18,45 @@
             width: 100%;
             max-width: 440px;
         }
-        .auth-input {
-            width: 100%;
-            background: rgba(9, 3, 20, 0.8);
-            border: 1px solid rgba(168, 85, 247, 0.4);
-            border-radius: 10px;
-            padding: 0.85rem 1rem;
+        .auth-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            margin-bottom: 0.35rem;
             color: var(--text-main);
-            font-size: 1rem;
-            margin-top: 0.4rem;
-            margin-bottom: 1rem;
-        }
-        .auth-input:focus {
-            outline: none;
-            border-color: var(--cyan-accent);
         }
     </style>
 </head>
 <body>
-    <div class="bg-orb orb-1"></div>
-    <div class="bg-orb orb-2"></div>
-
     <div class="login-wrapper">
-        <div style="text-align: center; margin-bottom: 1.5rem;">
+        <div style="text-align: center; margin-bottom: 1.75rem;">
             <div class="logo" style="font-size: 2rem;">NEURO<span>GRADE</span></div>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem;">
+            <p style="color: var(--text-muted); font-size: 0.925rem; margin-top: 0.35rem;">
                 Intelligent Tutoring System • Evaluasi Otomatis
             </p>
         </div>
 
-        <section class="glass-card">
+        <section class="card">
             <div class="badge" id="auth-badge">PORTAL SISWA</div>
-            <h2 id="auth-title" style="margin-bottom: 0.3rem;">Masuk ke Akun</h2>
-            <p id="auth-subtitle" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            <h2 id="auth-title" style="margin-bottom: 0.25rem; font-size: 1.4rem;">Masuk ke Akun</h2>
+            <p id="auth-subtitle" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">
                 Masukkan username dan password yang sudah terdaftar.
             </p>
 
-            <label style="font-size: 0.9rem; color: var(--purple-neon);">Username</label>
-            <input type="text" id="auth-username" class="auth-input" placeholder="Buat atau masukkan username">
+            <label class="auth-label" for="auth-username">Username</label>
+            <input type="text" id="auth-username" placeholder="Masukkan username">
 
-            <label style="font-size: 0.9rem; color: var(--purple-neon);">Password</label>
-            <input type="password" id="auth-password" class="auth-input" placeholder="Masukkan password">
+            <label class="auth-label" for="auth-password">Password</label>
+            <input type="password" id="auth-password" placeholder="Masukkan password">
 
-            <p id="auth-error" style="color: #f87171; font-size: 0.85rem; margin-bottom: 0.5rem; display: none;"></p>
+            <p id="auth-error" style="color: var(--status-danger); font-size: 0.85rem; margin-top: 0.75rem; display: none;"></p>
 
-            <button id="btn-submit-auth" class="btn-futuristic" style="margin-top: 0.5rem;">Masuk ke Dashboard</button>
+            <button id="btn-submit-auth" class="btn-primary" style="margin-top: 1.25rem;">Masuk ke Dashboard</button>
             
-            <p style="text-align: center; margin-top: 1.2rem; font-size: 0.9rem; color: var(--text-muted);">
+            <p style="text-align: center; margin-top: 1.25rem; font-size: 0.875rem; color: var(--text-muted);">
                 <span id="toggle-text">Belum punya akun?</span>
-                <a href="#" id="toggle-mode" style="color: var(--cyan-accent); font-weight: 700; text-decoration: none; margin-left: 4px;">
+                <a href="#" id="toggle-mode" style="color: var(--accent); font-weight: 600; text-decoration: none; margin-left: 4px;">
                     Daftar Akun Baru
                 </a>
             </p>
@@ -98,10 +88,10 @@
             if (isRegisterMode) {
                 badge.textContent = "PENDAFTARAN BARU";
                 title.textContent = "Buat Akun Siswa";
-                subtitle.textContent = "Isi username dan password baru untuk mendaftar.";
+                subtitle.textContent = "Daftarkan username baru untuk memulai evaluasi belajar.";
                 submitBtn.textContent = "Daftar & Masuk";
-                toggleText.textContent = "Sudah punya akun?";
-                toggleLink.textContent = "Masuk di sini";
+                toggleText.textContent = "Sudah memiliki akun?";
+                toggleLink.textContent = "Login di Sini";
             } else {
                 badge.textContent = "PORTAL SISWA";
                 title.textContent = "Masuk ke Akun";
@@ -112,37 +102,33 @@
             }
         });
 
-        async function handleAuth() {
-            const u = document.getElementById("auth-username").value;
-            const p = passwordInput.value;
+        submitBtn.addEventListener("click", async () => {
+            const username = document.getElementById("auth-username").value.trim();
+            const password = passwordInput.value;
 
-            submitBtn.disabled = true;
-            submitBtn.textContent = "Memproses...";
-            errorMsg.style.display = "none";
-
-            try {
-                const res = isRegisterMode ? await registerUser(u, p) : await loginUser(u, p);
-
-                if (res.success) {
-                    window.location.href = "dashboard.html";
-                    return;
-                } else {
-                    errorMsg.textContent = res.message;
-                    errorMsg.style.display = "block";
-                }
-            } catch (err) {
-                errorMsg.textContent = "Gagal terhubung ke server.";
+            if (!username || !password) {
+                errorMsg.textContent = "Username dan password tidak boleh kosong.";
                 errorMsg.style.display = "block";
+                return;
             }
 
-            submitBtn.disabled = false;
-            submitBtn.textContent = isRegisterMode ? "Daftar & Masuk" : "Masuk ke Dashboard";
-        }
+            try {
+                const res = isRegisterMode 
+                    ? await registerUserAPI(username, password)
+                    : await loginUserAPI(username, password);
 
-        submitBtn.addEventListener("click", handleAuth);
+                if (!res.success) {
+                    errorMsg.textContent = res.message || "Gagal memproses autentikasi.";
+                    errorMsg.style.display = "block";
+                    return;
+                }
 
-        passwordInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") handleAuth();
+                setCurrentUser(res.user.username);
+                window.location.href = "dashboard.html";
+            } catch (err) {
+                errorMsg.textContent = "Terjadi gangguan jaringan atau server mati.";
+                errorMsg.style.display = "block";
+            }
         });
     </script>
 </body>
