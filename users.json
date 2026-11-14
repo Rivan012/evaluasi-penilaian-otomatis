@@ -1,0 +1,47 @@
+{
+    "Hanifah Azizah": {
+        "username": "Hanifah Azizah",
+        "password": "zizah123",
+        "xp": 205,
+        "level": 3,
+        "totalAnswered": 5,
+        "highScores": 4,
+        "history": [
+            {
+                "tanggal": "10:58",
+                "soal": "Jelaskan fungsi utama dari algoritma Fuzzy Ma...",
+                "skor": 100,
+                "kategori": "sangat_baik",
+                "xp": 50
+            },
+            {
+                "tanggal": "10:57",
+                "soal": "Apa tujuan tahap preprocessing seperti lowerc...",
+                "skor": 100,
+                "kategori": "sangat_baik",
+                "xp": 50
+            },
+            {
+                "tanggal": "10:57",
+                "soal": "Mengapa Intelligent Tutoring System membutuhk...",
+                "skor": 98,
+                "kategori": "sangat_baik",
+                "xp": 50
+            },
+            {
+                "tanggal": "10:56",
+                "soal": "Apa yang dimaksud dengan Levenshtein Distance...",
+                "skor": 100,
+                "kategori": "sangat_baik",
+                "xp": 50
+            },
+            {
+                "tanggal": "10:56",
+                "soal": "Jelaskan fungsi utama dari algoritma Fuzzy Ma...",
+                "skor": 48,
+                "kategori": "perlu_perbaikan",
+                "xp": 5
+            }
+        ]
+    }
+}
