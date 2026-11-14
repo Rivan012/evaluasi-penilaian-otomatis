@@ -82,16 +82,18 @@ evaluasi-penilaian-otomatis/
    pip install -r requirements.txt
    ```
 
-4. **Jalankan server aplikasi**:
+4. **Konfigurasi Environment**:
    ```bash
-   uvicorn main:app --reload --host 127.0.0.1 --port 8000
-   ```
-   *atau langsung jalankan:*
-   ```bash
-   python -m uvicorn main:app --reload
+   cp .env.example .env
    ```
 
-5. **Akses Aplikasi**:
+5. **Jalankan server aplikasi**:
+   ```bash
+   python main.py
+   ```
+   Aplikasi berjalan di `http://127.0.0.1:8000`.
+
+6. **Akses Aplikasi**:
    - Web App: `http://127.0.0.1:8000/index.html` (atau `http://127.0.0.1:8000/login.html`)
    - Dokumentasi Interaktif API (Swagger UI): `http://127.0.0.1:8000/docs`
 

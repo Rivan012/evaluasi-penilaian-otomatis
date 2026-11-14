@@ -1,10 +1,6 @@
 import os
 import joblib
-
-MODEL_PATH = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "fuzzy_matching_model.joblib"
-)
+from backend.config import MODEL_PATH
 
 def load_thresholds():
     if os.path.exists(MODEL_PATH):

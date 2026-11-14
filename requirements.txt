@@ -7,3 +7,4 @@ numpy
 joblib
 thefuzz
 python-Levenshtein
+python-dotenv

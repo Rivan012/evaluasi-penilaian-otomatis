@@ -1,11 +1,7 @@
 import json
 import os
 from backend.database.connection import get_connection
-
-USERS_FILE = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "users.json"
-)
+from backend.config import USERS_FILE, ADMIN_USERNAME, ADMIN_PASSWORD
 
 def get_all_questions():
     with get_connection() as conn:
@@ -22,7 +18,19 @@ def get_question_by_id(question_id: int):
 
 def load_users():
     if not os.path.exists(USERS_FILE):
-        return {}
+        initial = {
+            ADMIN_USERNAME: {
+                "username": ADMIN_USERNAME,
+                "password": ADMIN_PASSWORD,
+                "xp": 500,
+                "level": 6,
+                "totalAnswered": 10,
+                "highScores": 8,
+                "history": []
+            }
+        }
+        save_users(initial)
+        return initial
     with open(USERS_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
 
